@@ -1,0 +1,140 @@
+* {
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: "Times New Roman", Times, serif;
+}
+  
+  body {
+    background: linear-gradient(135deg, #339cbe, #da9eb7);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 500px;
+    background: #d6b2b2;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #711f92;
+  }
+  
+  .input-section {
+    display: flex;
+    gap: 10px;
+  }
+  
+  input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: 0.3s;
+  }
+  
+  input:focus {
+    border-color: #69aecc;
+    outline: none;
+  }
+  
+  
+  button {
+    padding: 12px;
+    border: none;
+    background: linear-gradient(135deg, #ff5f94, #4b0f43);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    transform: scale(1.05);
+    opacity: 0.95;
+  }
+  
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+  }
+  
+  .filters button {
+    flex: 1;
+    margin: 0 3px;
+    background: #e0f2f1;
+    color: #01121a;
+  }
+  
+  .filters button.active {
+    background: #2c5364;
+    color: white;
+  }
+  
+  
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: #fbfdfd;
+    transition: 0.3s;
+  }
+  
+  li:hover {
+    background: #e0f7f7;
+  }
+  
+  
+  li.completed span {
+    text-decoration: line-through;
+    color: #838282;
+  }
+  
+  
+  .task-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .task-actions button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  
+  .task-actions button:first-child {
+    background: #2bd1c9;
+  }
+  
+  
+  .delete-btn {
+    background: #e53e3e;
+  }
+  
+  
+  @media (max-width: 500px) {
+    .input-section {
+      flex-direction: column;
+    }
+    
+  }
