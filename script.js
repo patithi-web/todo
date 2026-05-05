@@ -3,97 +3,87 @@ const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
 const filterButtons = document.querySelectorAll(".filters button");
 
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-let currentFilter = "all";
+     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+     let currentFilter = "all";
 
-function saveTasks() {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+           function saveTasks() {
+               localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
+           function renderTasks() {
+                taskList.innerHTML = "";
 
-function renderTasks() {
-  taskList.innerHTML = "";
-
-  let filteredTasks = tasks.filter(task => {
-    if (currentFilter === "pending") return !task.completed;
-    if (currentFilter === "completed") return task.completed;
-    return true;
+         let filteredTasks = tasks.filter(task => {
+             if (currentFilter === "pending") return !task.completed;
+            if (currentFilter === "completed") return task.completed;
+                return true;
   });
 
-  filteredTasks.forEach(task => {
-    const li = document.createElement("li");
-    li.className = task.completed ? "completed" : "";
+          filteredTasks.forEach(task => {
+              const li = document.createElement("li");
+              li.className = task.completed ? "completed" : "";
 
-    const span = document.createElement("span");
-    span.textContent = task.text;
+          const span = document.createElement("span");
+          span.textContent = task.text;
 
-    // Toggle button
-    const toggleBtn = document.createElement("button");
-    toggleBtn.textContent = task.completed ? "Undo" : "Done";
-    toggleBtn.onclick = () => toggleTask(task.id);
+       const toggleBtn = document.createElement("button");
+       toggleBtn.textContent = task.completed ? "Undo" : "Done";
+       toggleBtn.onclick = () => toggleTask(task.id);
 
-    // Delete button
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.classList.add("delete-btn");
-    deleteBtn.onclick = () => deleteTask(task.id);
+       const deleteBtn = document.createElement("button");
+       deleteBtn.textContent = "Delete";
+       deleteBtn.classList.add("delete-btn");
+       deleteBtn.onclick = () => deleteTask(task.id);
 
     const actions = document.createElement("div");
     actions.classList.add("task-actions");
     actions.append(toggleBtn, deleteBtn);
 
-    li.append(span, actions);
-    taskList.appendChild(li);
+       li.append(span, actions);
+       taskList.appendChild(li);
   });
 }
 
-// Add task
-addBtn.addEventListener("click", () => {
-  const text = taskInput.value.trim();
-  if (!text) return;
+     addBtn.addEventListener("click", () => {
+     const text = taskInput.value.trim();
+     if (!text) return;
 
-  const newTask = {
-    id: Date.now(),
-    text,
-    completed: false
+        const newTask = {
+        id: Date.now(),
+        text,
+        completed: false
   };
 
-  tasks.push(newTask);
-  saveTasks();
-  renderTasks();
+      tasks.push(newTask);
+       saveTasks();
+       renderTasks();
 
   taskInput.value = "";
 });
 
-// Toggle task
-function toggleTask(id) {
-  tasks = tasks.map(task =>
-    task.id === id ? { ...task, completed: !task.completed } : task
+        function toggleTask(id) {
+           tasks = tasks.map(task =>
+           task.id === id ? {task, completed: !task.completed } : task
   );
-  saveTasks();
-  renderTasks();
+      saveTasks();
+     renderTasks();
 }
 
-// Delete task
-function deleteTask(id) {
-  tasks = tasks.filter(task => task.id !== id);
-  saveTasks();
-  renderTasks();
+       function deleteTask(id) {
+        tasks = tasks.filter(task => task.id !== id);
+        saveTasks();
+        renderTasks();
 }
 
+      filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+      document.querySelector(".filters .active").classList.remove("active");
+      btn.classList.add("active");
 
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelector(".filters .active").classList.remove("active");
-    btn.classList.add("active");
-
-    currentFilter = btn.dataset.filter;
-    renderTasks();
-
-
+        currentFilter = btn.dataset.filter;
+        renderTasks();
 
   });
 });
-
 
 renderTasks();

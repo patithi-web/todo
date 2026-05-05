@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Todo Task Manger</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Todo Task Manger</title>
+       <link rel="stylesheet" href="style.css">
+    </head>
 <body>
 
-  <div class="container">
-    <h1>Todo Task Master</h1>
-
-    <!-- Add Task -->
-    <div class="input-section">
-      <input type="text" id="taskInput" placeholder="Enter a new task...">
-      <button id="addBtn">Add</button>
+          <div class="container">
+             <h1>Todo Task Master</h1>
+         <div class="input-section">
+             <input type="text" id="taskInput" placeholder="Enter a new task...">
+            <button id="addBtn">Add</button>
     </div>
 
-    <!-- Filters -->
-    <div class="filters">
-      <button data-filter="all" class="active">All</button>
-      <button data-filter="pending">Pending</button>
-      <button data-filter="completed">Completed</button>
+        <div class="filters">
+           <button data-filter="all" class="active">All</button>
+           <button data-filter="pending">Pending</button>
+           <button data-filter="completed">Completed</button>
     </div>
 
-    
-    <!-- Task List -->
-    <ul id="taskList"></ul>
+        <ul id="taskList"></ul>
   </div>
 
-  <script src="script.js"></script>
+         <script src="script.js"></script>
 </body>
 </html>
